@@ -1,68 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <!--とりあえず書く呪文-->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <!--画面幅の自動調節-->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- CSRF Token -->
-         {{-- 後の章で説明します --}}
-         <!--悪意のあるエクスプロイト（CSRF）からアプリケーションを守ってくれる・-->
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+{{-- layouts/profile.blade.phpを読み込む --}}
+@extends('layouts.profile')
 
 
-        {{-- 各ページごとにtitleタグを入れるために@yieldで空けておきます。 --}}
-        <!--指定したセクションの内容を表示する-->
-        <title>@yield('title')</title>
+{{-- admin.blade.phpの@yield('title')に'ニュースの新規作成'を埋め込む --}}
+@section('title', 'Myプロフィール')
 
-        <!-- Scripts -->
-         {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
-         <!--パスの生成?-->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-
-        <!-- Fonts -->
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        {{-- Laravel標準で用意されているCSSを読み込みます --}}
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
-    </head>
-    <body>
-        <div id="app">
-            {{-- 画面上部に表示するナビゲーションバーです。 --}}
-            <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
-                <div class="container">
-                    <!--urlを返すメソッド-->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                    <!--configフォルダのapp.phpの中にあるnameにアクセス。基本的にはLaravelが格納-->
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
-
-                        </ul>
-
-                        <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            {{-- ここまでナビゲーションバー --}}
-
-            <main class="py-4">
-                {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
-                @yield('content')
-            </main>
+{{-- admin.blade.phpの@yield('content')に以下のタグを埋め込む --}}
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <h2>Myプロフィール</h2>
+            </div>
         </div>
-    </body>
-</html>
+    </div>
+@endsection
